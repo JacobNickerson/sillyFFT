@@ -26,7 +26,7 @@ int main() {
     fftw_execute(plan);
     
     // Creating a render window
-    sf::RenderWindow window(sf::VideoMode(WINDOW_X,WINDOW_Y), "Sine Wave");
+    sf::RenderWindow window(sf::VideoMode(WINDOW_X,WINDOW_Y), "SillyFFT");
     window.setPosition(sf::Vector2i(0,0));
     
     // Creating a vertex array for sine data
@@ -40,7 +40,7 @@ int main() {
     for (int i = 0; i < SAMPLE_COUNT; i++) {
         double freq = i;
         double magnitude = std::sqrt(std::pow(out[i][0],2) + std::pow(out[i][1],2));
-        fftData[i] = sf::Vector2f(2*freq, WINDOW_Y/2 - magnitude);    
+        fftData[i] = sf::Vector2f(2*freq, WINDOW_Y - 50 - magnitude); // 50 chosen arbitrarily to provide an offset from the bottom for clarity   
     }
 
     bool showSine = true; // Used to switch between displaying sine and fft
